@@ -9,6 +9,7 @@ function columnRows(num) {
     for (let i = 0; i < num; i++) {
       const square = document.createElement("div");
       square.classList.add("square");
+      square.addEventListener("mouseover", colorChange);
       rowContainer.appendChild(square);
     }
   }
@@ -22,7 +23,7 @@ function removeGrid() {
 }
 
 function resizeGrid() {
-  userInput = prompt("What's your desired grid size?");
+  const userInput = prompt("What's your desired grid size?");
   if (isNaN(userInput) || userInput < 1 || userInput > 100) {
     alert("Enter a valid number between 1 and 100");
     return;
@@ -30,6 +31,18 @@ function resizeGrid() {
     removeGrid();
     columnRows(userInput);
   }
+}
+
+function randomColorGenerator() {
+  let color = [];
+  for (let i = 0; i < 3; i++) {
+    color.push(Math.floor(Math.random() * 256));
+  }
+  return `rgb(${color.join(",")})`;
+}
+
+function colorChange(event) {
+  event.target.style.backgroundColor = randomColorGenerator();
 }
 
 columnRows(16);
