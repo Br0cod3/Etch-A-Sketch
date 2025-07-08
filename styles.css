@@ -18,10 +18,6 @@
   flex: 1;
 }
 
-.square:hover {
-  background-color: #f0f0f0;
-}
-
 .btn {
   display:block;
   margin: 10px 0 20px 0;
